@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HOME CONTROL // LOPSEED</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    .knob-box{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:5px;
+}
+
+.knob-box h4{
+  margin:0;
+  font-size:14px;
+  color:#aaa;
+  letter-spacing:1px;
+}
+body{
+  margin:0;
+  padding:20px;
+  background:#111;
+  color:white;
+  font-family:Arial;
+  text-align:center;
+}
+
+h2{
+  margin:10px 0;
+}
+
+hr{
+  border:0;
+  height:2px;
+  background:#333;
+  margin-bottom:25px;
+}
+
+/* ================= BUTTONS ================= */
+
+.panel{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  align-items:center;
+}
+
+.panel button{
+  width:100%;
+  max-width:320px;
+  height:58px;
+  border:none;
+  border-radius:10px;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* ================= SLIDER ================= */
+
+.slider-box{
+  margin-top:30px;
+  max-width:320px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.slider-box input{
+  width:100%;
+}
+
+/* ================= KNOBS ================= */
+
+.knobs-section{
+  margin-top:40px;
+  padding-top:25px;
+  border-top:2px solid #333;
+}
+
+.knobs-wrap{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:25px;
+}
+
+.knob{
+  width:220px;
+  height:180px;
+  touch-action:none;
+  cursor:pointer;
+}
+
+.value{
+  user-select:none;
+}
+
+@media(max-width:600px){
+
+  .knobs-wrap{
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .knob{
+    width:95%;
+    max-width:260px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<h2>RACHID HOME PANEL CONTROL</h2>
+<hr>
+
+<!-- ================= BUTTONS ================= -->
+
+<div class="panel">
+
+<button onclick="sendMsg('1')" style="background:gold;color:black;">YELLOW</button>
+
+<button onclick="sendMsg('2')" style="background:blue;color:white;">BLUE</button>
+
+<button onclick="sendMsg('3')" style="background:red;color:white;">RED</button>
+
+<button onclick="sendMsg('0')" style="background:gray;color:white;">SHUT DOWN</button>
+
+<button onclick="sendMsg('4')" style="background:lime;color:black;">SEQUENCE</button>
+
+<button onclick="sendMsg('5')" style="background:purple;color:white;">ALL ON</button>
+
+<button onclick="sendMsg('6')" style="background:#00bcd4;color:white;">KNOBS MODE</button>
+
+</div>
+
+<!-- ================= BRIGHTNESS ================= -->
+
+<div class="slider-box">
+
+<h3>BRIGHTNESS</h3>
+
+<input type="range"
+min="0"
+max="255"
+value="128"
+onchange="sendSlider(this.value)">
+
+<p>Valeur : <span id="val">128</span></p>
+
+</div>
+
+<!-- ================= KNOBS ================= -->
+
+<div class="knobs-section">
+
+<h3>ANALOG CONTROL</h3>
+
+<div class="knobs-wrap">
+
+    <div class="knob-box">
+<h4>YELLOW POWER</h3>
+<!-- ===== KNOB 1 ===== -->
+<svg viewBox="0 0 300 220" class="knob" data-index="1">
+
+<path d="M40 180 A110 110 0 0 1 260 180"
+fill="none"
+stroke="#333"
+stroke-width="18"
+stroke-linecap="round"/>
+
+<path class="arc"
+d="M40 180 A110 110 0 0 1 260 180"
+fill="none"
+stroke="RED"
+stroke-width="18"
+stroke-linecap="round"
+stroke-dasharray="345"
+stroke-dashoffset="345"/>
+
+<line class="needle"
+x1="150" y1="180"
+x2="150" y2="85"
+stroke="white"
+stroke-width="6"
+stroke-linecap="round"
+transform="rotate(-90 150 180)"/>
+
+<circle cx="150" cy="180" r="12" fill="gold"/>
+
+<text class="value"
+x="150"
+y="212"
+fill="white"
+font-size="28"
+text-anchor="middle">0</text>
+
+</svg>
+</div>
+
+<!-- ===== KNOB 2 ===== -->
+
+<div class="knob-box">
+<h4>BLUE POWER</h3>
+<svg viewBox="0 0 300 220" class="knob" data-index="2">
+
+<path d="M40 180 A110 110 0 0 1 260 180"
+fill="none"
+stroke="#333"
+stroke-width="18"
+stroke-linecap="round"/>
+
+<path class="arc"
+d="M40 180 A110 110 0 0 1 260 180"
+fill="none"
+stroke="BLUE"
+stroke-width="18"
+stroke-linecap="round"
+stroke-dasharray="345"
+stroke-dashoffset="345"/>
+
+<line class="needle"
+x1="150" y1="180"
+x2="150" y2="85"
+stroke="white"
+stroke-width="6"
+stroke-linecap="round"
+transform="rotate(-90 150 180)"/>
+
+<circle cx="150" cy="180" r="12" fill="cyan"/>
+
+<text class="value"
+x="150"
+y="212"
+fill="white"
+font-size="28"
+text-anchor="middle">0</text>
+
+</svg>
+</div>
+
+<!-- ===== KNOB 3 ===== -->
+<svg viewBox="0 0 300 220" class="knob" data-index="3">
+
+<path d="M40 180 A110 110 0 0 1 260 180"
+fill="none"
+stroke="#333"
+stroke-width="18"
+stroke-linecap="round"/>
+
+<path class="arc"
+d="M40 180 A110 110 0 0 1 260 180"
+fill="none"
+stroke="YELLOW"
+stroke-width="18"
+stroke-linecap="round"
+stroke-dasharray="345"
+stroke-dashoffset="345"/>
+
+<line class="needle"
+x1="150" y1="180"
+x2="150" y2="85"
+stroke="white"
+stroke-width="6"
+stroke-linecap="round"
+transform="rotate(-90 150 180)"/>
+
+<circle cx="150" cy="180" r="12" fill="orange"/>
+
+<text class="value"
+x="150"
+y="212"
+fill="white"
+font-size="28"
+text-anchor="middle">0</text>
+
+</svg>
+
+</div>
+</div>
+
+<!-- ================= MQTT ================= -->
+
+<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+
+<script>
+
+const client = mqtt.connect(
+"wss://w506f06b.ala.us-east-1.emqxsl.com:8084/mqtt",
+{
+ username:"timizar",
+ password:"Timizar@1971"
+}
+);
+
+/* ================= BUTTONS ================= */
+
+function sendMsg(val){
+  client.publish("studio/light/mode", val);
+}
+
+/* ================= BRIGHTNESS ================= */
+
+function sendSlider(val){
+
+  document.getElementById("val").innerText = val;
+
+  client.publish(
+    "studio/light/brightness",
+    val
+  );
+}
+
+/* ================= KNOBS ================= */
+
+document.querySelectorAll(".knob").forEach(knob => {
+
+  knob.isDown = false;
+  knob.value255 = 0;
+
+  /* mouse */
+  knob.addEventListener("mousedown", ()=>{
+    knob.isDown = true;
+  });
+
+  knob.addEventListener("mouseup", ()=>{
+    knob.isDown = false;
+    sendKnob(knob);
+  });
+
+  knob.addEventListener("mouseleave", ()=>{
+    if(knob.isDown){
+      knob.isDown = false;
+      sendKnob(knob);
+    }
+  });
+
+  knob.addEventListener("mousemove", e=>{
+    if(!knob.isDown) return;
+    updateKnob(e,knob);
+  });
+
+  /* touch */
+  knob.addEventListener("touchstart", ()=>{
+    knob.isDown = true;
+  });
+
+  knob.addEventListener("touchend", ()=>{
+    knob.isDown = false;
+    sendKnob(knob);
+  });
+
+  knob.addEventListener("touchmove", e=>{
+    if(!knob.isDown) return;
+    e.preventDefault();
+    updateKnob(e.touches[0],knob);
+  });
+
+});
+
+/* ================= UPDATE ================= */
+
+function updateKnob(e,knob){
+
+  let needle = knob.querySelector(".needle");
+  let value  = knob.querySelector(".value");
+  let arc    = knob.querySelector(".arc");
+
+  let rect = knob.getBoundingClientRect();
+
+  let cx = rect.left + rect.width/2;
+  let cy = rect.top + rect.height*0.82;
+
+  let dx = e.clientX - cx;
+  let dy = e.clientY - cy;
+
+  let angle = Math.atan2(dy,dx) * 180 / Math.PI;
+
+  if(angle > 0) angle = 0;
+  if(angle < -180) angle = -180;
+
+  let percent = (angle + 180) / 180;
+
+  let val = Math.round(percent * 255);
+
+  knob.value255 = val;
+
+  let rotate = angle + 90;
+
+  needle.setAttribute(
+    "transform",
+    "rotate("+rotate+" 150 180)"
+  );
+
+  value.textContent = val;
+
+  let total = 345;
+  let offset = total - (total * percent);
+
+  arc.setAttribute(
+    "stroke-dashoffset",
+    offset
+  );
+}
+
+/* ================= SEND MQTT ================= */
+
+function sendKnob(knob){
+
+  let id = knob.dataset.index;
+
+  client.publish(
+    "studio/knobs/" + id,
+    knob.value255.toString()
+  );
+}
+
+</script>
+
+</body>
+</html>
